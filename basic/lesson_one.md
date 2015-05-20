@@ -58,4 +58,15 @@ In the new window, under system variables, select the variable named Path. (You'
 On the search in windows 8 type in System Environment variables.  From there the steps are the same as with windows 7.
 
 
+###Installing Python
+
+If you are Ubuntu or Mac OSX you already have a Python interpretter.  If you are on windows keep reading:
+
+You'll need to head to the (python download page)[https://www.python.org/downloads/] and then download Python 2.7.9  From there you'll simply need to copy the installer and next through the steps.  
+
+The final thing you'll need to do is add Python to your path.  To do this go to your system environment variables and add C:\Python27; to your Path variable.  
+
+Now you are ready to start programming!
+
+
 
