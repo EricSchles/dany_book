@@ -68,5 +68,74 @@ The final thing you'll need to do is add Python to your path.  To do this go to 
 
 Now you are ready to start programming!
 
+##Our first example
+
+Now that you are done installing things, let's make use of what we've just installed!  So you'll need to find your terminal.  For Mac OSX and Ubuntu this program is just called terminal.  For Windows we are going to download (git bash)[https://git-scm.com/download/win].  Now launch your terminal (or git bash) and type the following command:
+
+`python`
+
+You should see a bunch of text like this:
+
+```
+Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
+[GCC 4.8.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+If you didn't it means something went wrong, get Eric, he'll fix it :).  If you are running this tutorial remote, Eric's email address is ericschles@gmail.com.  Don't abuse that he's giving this out!
+
+Okay, now that you have python type `exit()` into the window (after the `>>>`).  
+
+Now we'll open a text editor from the command line.  To do this type:
+
+`emacs hello.py`
+
+This opens the fille hello.py for editting.  
+
+We are now ready to write our first program!
+
+Type:
+
+`print "Hello World"`
+
+Into the emacs window that should have popped up.  If nothing popped up, again, get Eric and he'll fix it.
+
+Now close emacs and type:
+
+`python hello.py`
+
+This should print `Hello World` to the screen.  Congradulations, you've written your first program!  
+
+##Where we will go from here
+
+Now that you've written your first program, we'll go through the primitives of the python language.  These include:
+
+* If/Else statements
+* Variables
+* For loops, While loops (known as iteration more generally)
+* Functions
+* Objects
+* Writing to Files / Reading from Files (known as File I/O)
+
+From there will move onto more advanced topics:
+
+* Object Oriented Programming
+* Web Development
+* Functional Programming
+* Statistics in Python
+* Data Visualization in Python
+* Web scraping
+* Machine Learning
+* High Performance Computing
+  * Multi-threading / parallel processing
+  * GPU programming
+  * Spark
+* Using Databases
+
+
+
+
+
 
 
