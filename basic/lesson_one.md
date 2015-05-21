@@ -37,9 +37,9 @@ Linux: Standard installation from your favorite package manager :)
 
 Ubuntu: `sudo apt-get install emacs` (from the terminal)
 
-(Mac OSX package)[http://emacsformacosx.com/]
+[Mac OSX package](http://emacsformacosx.com/)
 
-(Windows 7 & 8 package)[https://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip]
+[Windows 7 & 8 package](https://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip)
 
 ###Adding Python to your path (windows only)
 
@@ -62,7 +62,7 @@ On the search in windows 8 type in System Environment variables.  From there the
 
 If you are Ubuntu or Mac OSX you already have a Python interpretter.  If you are on windows keep reading:
 
-You'll need to head to the (python download page)[https://www.python.org/downloads/] and then download Python 2.7.9  From there you'll simply need to copy the installer and next through the steps.  
+You'll need to head to the [python download page](https://www.python.org/downloads/) and then download Python 2.7.9  From there you'll simply need to copy the installer and next through the steps.  
 
 The final thing you'll need to do is add Python to your path.  To do this go to your system environment variables and add C:\Python27; to your Path variable.  
 
@@ -70,7 +70,7 @@ Now you are ready to start programming!
 
 ##Our first example
 
-Now that you are done installing things, let's make use of what we've just installed!  So you'll need to find your terminal.  For Mac OSX and Ubuntu this program is just called terminal.  For Windows we are going to download (git bash)[https://git-scm.com/download/win].  Now launch your terminal (or git bash) and type the following command:
+Now that you are done installing things, let's make use of what we've just installed!  So you'll need to find your terminal.  For Mac OSX and Ubuntu this program is just called terminal.  For Windows we are going to download [git bash](https://git-scm.com/download/win).  Now launch your terminal (or git bash) and type the following command:
 
 `python`
 
