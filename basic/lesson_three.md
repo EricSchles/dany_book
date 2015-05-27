@@ -20,14 +20,14 @@ So say we had the two following statements:
 
 ```
 x = 4
-x < 5 and x == 4
+print x < 5 and x == 4
 ```
 
 In the above example, we'd have a true statement.  
 
 ```
 x = 3
-x < 5 and x == 4
+print x < 5 and x == 4
 ```
 
 Now the statement should evaluate to false.  
@@ -42,7 +42,7 @@ Example 1:
 
 ```
 x = 7
-x%7==0 or x < 4
+print x%7==0 or x < 4
 ```
 
 In the above example, the statement will evaulate to true, because the left hand side boolean is true, x%7==0.  Therefore the statement simply evaulates to true and we don't care that x < 4 is false.  
@@ -51,8 +51,21 @@ Example 2:
 
 ```
 x = 4
-x%4==1 or x < 3
+print x%4==1 or x < 3
 ```
 
 In this statement, the answer will be false, because both x%4==1 is false AND x < 3 is false, when x is equal to 4.
+
+###Understanding the NOT statement
+
+Unlike the AND and OR statements, the NOT statement only takes a single boolean statement, and changes it's truth value.
+
+thus `not True` -> `False`.
+
+So for example:
+
+```
+x = 7
+print not(x ==7)
+```
 
