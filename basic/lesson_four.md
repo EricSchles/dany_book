@@ -62,3 +62,32 @@ So say we had two greetings -
 `greeting_one = "Hello there, I'm Eric, how are you?"` and `greeting_two = "Hello there, I'm Sam, how are you?"`.  In the situation where the 
 
 
+So looking at these two flow of control statements:
+
+```
+greeting_one = "Hello there, I'm Eric, how are you?"
+greeting_two = "Hello there, I'm Sam, how are you?"
+if "Eric" in greeting_one:
+	print "Eric must have said this"
+print "Eric didn't say this"
+if "Eric" in greeting_two:
+	print "Eric must have said this"
+print "Eric didn't say this"
+```
+
+And
+
+```
+greeting_one = "Hello there, I'm Eric, how are you?"
+greeting_two = "Hello there, I'm Sam, how are you?"
+if "Eric" in greeting_one:
+	print "Eric must have said this"
+else:
+	print "Eric didn't say this"
+if "Eric" in greeting_two:
+	print "Eric must have said this"
+else:
+	print "Eric didn't say this"
+```
+
+If you run these two lines of code, one with the greeting as it was originally and the greeting that is false.  
