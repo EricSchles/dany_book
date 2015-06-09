@@ -103,4 +103,23 @@ for i in x:
 
 There is a lot new in this code.  First let's look at the syntax of the line `for i in x:`.  In english, this statement is saying, for each element in x, give it the name i and then process it inside the scope of the for statement.  If you remember from if statements, anything inside the scope of the if statement is executed, only if the boolean of the if statement is true.  With a for loop, the scope is anything indendented (just like with the if statement) and the for loop is executed for each element in the list specified after the `in` part of the for statement.  This statement is generally called a for-loop, because each element in the list is looped through.  Creating a cycle of actions, in very simple, elegant, language.  
 
+Thinking about iteration is certainly challenging at first, but it can allow you to do a lot of stuff more easily than you thought possible.  
 
+###A practical application of iteration
+
+Back in the 1700s a young Gauss (at the age of 5) was asked to add the first 100 numbers, along with his classmates.  Most of the other children took a long time to solve this.  But Gauss looked at the problem and within a few minutes came up with a powerful mathematical formula:
+
+`n*(n+1)/2`
+
+This formula is one of the simplest and most powerful formula's ever invented in mathematics.  It makes a hard task - adding n-many numbers - very, very easy.  To create such a formula requires, insight, intelligence, cleverness and a lot of other important traits that inform a predisposition towards mathematics.  
+
+Let's implement such a function in python:
+
+```
+def gaussian_sum(n):
+	return n(n+1)/2
+	
+print gaussian_sum(100)
+```
+
+You should run the above code and observer the solution.  
