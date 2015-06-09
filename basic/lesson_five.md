@@ -93,6 +93,14 @@ If you run the following code, you may have noticed that dir returns a list of m
 
 ##Introduction to iteration
 
+Now that we understand how to work with lists, let's understand how to access all the elements in them at once.
 
+```
+x = [1,2,3]
+for i in x:
+	print i
+```
+
+There is a lot new in this code.  First let's look at the syntax of the line `for i in x:`.  In english, this statement is saying, for each element in x, give it the name i and then process it inside the scope of the for statement.  If you remember from if statements, anything inside the scope of the if statement is executed, only if the boolean of the if statement is true.  With a for loop, the scope is anything indendented (just like with the if statement) and the for loop is executed for each element in the list specified after the `in` part of the for statement.  This statement is generally called a for-loop, because each element in the list is looped through.  Creating a cycle of actions, in very simple, elegant, language.  
 
 
