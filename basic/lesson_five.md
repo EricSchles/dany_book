@@ -122,4 +122,27 @@ def gaussian_sum(n):
 print gaussian_sum(100)
 ```
 
-You should run the above code and observer the solution.  
+You should run the above code and observer the solution.  Now, let's implement the same mathematical function with a for-loop.
+
+```
+summation = 0
+for i in range(0,101):
+	summation += i
+print summation
+```
+
+You should run this code as well.  If you ran both, you should see that the quantities are the same.  And this took no mathematical genius, insight, or cleverness.  Anyone and more importantly, everyone can write a reasonable for-loop, to recreate the genius of Gauss - one of the greatest mathematicians that ever lived.  And that's the point of computer science, generally, to make hard problems easier, by using tools to solve important problems.  This is, by the way the point of mathematics as well, despite what some people may have you believe.  
+
+There are some things worth noticing in our for-loop.  
+
+First, we went from 0 to 101.  The reason for this is, the range function goes up to, but not including the value supplied at the end of the range.  Also, notice the `+=` notation.  This is short hand for `summation = summation + i`.  Since addition is commutative, there is never any danger of making use of this abridged notation, for numbers. 
+
+To provide a counter example, observe the following:
+
+```
+x = "Hello there"
+x += " Eric"
+print x
+```
+
+Notice that you can 'add' strings.  Really you are concatenating them, but it's sort of the same thing, if we really understand how numbers work.  
