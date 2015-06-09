@@ -146,3 +146,13 @@ print x
 ```
 
 Notice that you can 'add' strings.  Really you are concatenating them, but it's sort of the same thing, if we really understand how numbers work.  
+
+In any event, what if we did the following:
+
+```
+x = "Eric"
+x += " Hello there"
+print x
+```
+
+Clearly, x appears in the reverse order - with Eric coming first, and Hello there coming second.  So the point is, string concatenation is not commutative.  Therefore, you need be careful when dealing with the `+=` operator.  This typically isn't a problem when dealing with simple computations, involving hardcoded values like the above examples.  But when all of the data is abstracted away to variables, it is tempting to make use of slick notation in order to save key strokes, and also to impress your friends.
