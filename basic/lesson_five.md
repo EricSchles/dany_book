@@ -93,6 +93,66 @@ If you run the following code, you may have noticed that dir returns a list of m
 
 ##Introduction to iteration
 
+Now that we understand how to work with lists, let's understand how to access all the elements in them at once.
 
+```
+x = [1,2,3]
+for i in x:
+	print i
+```
 
+There is a lot new in this code.  First let's look at the syntax of the line `for i in x:`.  In english, this statement is saying, for each element in x, give it the name i and then process it inside the scope of the for statement.  If you remember from if statements, anything inside the scope of the if statement is executed, only if the boolean of the if statement is true.  With a for loop, the scope is anything indendented (just like with the if statement) and the for loop is executed for each element in the list specified after the `in` part of the for statement.  This statement is generally called a for-loop, because each element in the list is looped through.  Creating a cycle of actions, in very simple, elegant, language.  
 
+Thinking about iteration is certainly challenging at first, but it can allow you to do a lot of stuff more easily than you thought possible.  
+
+###A practical application of iteration
+
+Back in the 1700s a young Gauss (at the age of 5) was asked to add the first 100 numbers, along with his classmates.  Most of the other children took a long time to solve this.  But Gauss looked at the problem and within a few minutes came up with a powerful mathematical formula:
+
+`n*(n+1)/2`
+
+This formula is one of the simplest and most powerful formula's ever invented in mathematics.  It makes a hard task - adding n-many numbers - very, very easy.  To create such a formula requires, insight, intelligence, cleverness and a lot of other important traits that inform a predisposition towards mathematics.  
+
+Let's implement such a function in python:
+
+```
+def gaussian_sum(n):
+	return n(n+1)/2
+	
+print gaussian_sum(100)
+```
+
+You should run the above code and observer the solution.  Now, let's implement the same mathematical function with a for-loop.
+
+```
+summation = 0
+for i in range(0,101):
+	summation += i
+print summation
+```
+
+You should run this code as well.  If you ran both, you should see that the quantities are the same.  And this took no mathematical genius, insight, or cleverness.  Anyone and more importantly, everyone can write a reasonable for-loop, to recreate the genius of Gauss - one of the greatest mathematicians that ever lived.  And that's the point of computer science, generally, to make hard problems easier, by using tools to solve important problems.  This is, by the way the point of mathematics as well, despite what some people may have you believe.  
+
+There are some things worth noticing in our for-loop.  
+
+First, we went from 0 to 101.  The reason for this is, the range function goes up to, but not including the value supplied at the end of the range.  Also, notice the `+=` notation.  This is short hand for `summation = summation + i`.  Since addition is commutative, there is never any danger of making use of this abridged notation, for numbers. 
+
+To provide a counter example, observe the following:
+
+```
+x = "Hello there"
+x += " Eric"
+print x
+```
+
+Notice that you can 'add' strings.  Really you are concatenating them, but it's sort of the same thing, if we really understand how numbers work.  
+
+In any event, what if we did the following:
+
+```
+x = "Eric"
+x += " Hello there"
+print x
+```
+
+Clearly, x appears in the reverse order - with Eric coming first, and Hello there coming second.  So the point is, string concatenation is not commutative.  Therefore, you need be careful when dealing with the `+=` operator.  This typically isn't a problem when dealing with simple computations, involving hardcoded values like the above examples.  But when all of the data is abstracted away to variables, it is tempting to make use of slick notation in order to save key strokes, and also to impress your friends.
