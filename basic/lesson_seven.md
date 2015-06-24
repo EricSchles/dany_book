@@ -73,9 +73,54 @@ if __name__ == '__main__':
 
 The object - called Node that we created is the main piece of something called a linked list.  The reason the data structure is named as such is because the list is created by linking nodes together, via pointers.  The pointer stores the address to the next object in the series, creating a chain.  
 
-Notice the use of standard conventions here - creating a variable cur (which stands for current) that references the head of the list and is updated throughout the list generation process
+Notice the use of standard conventions here - creating a variable cur (which stands for current) that references the head of the list and is updated throughout the list generation process.  Notice that to iterate the cur node to the next, we simply set the cur node's next variable - via cur.next = new_node and then set cur equal to the next node.  It is through this reference and indirection scheme that we are able to play with the semantics of memory in our program.
+
+Notice also we make use of this same paradigm - cur = cur.next when printing out all the elements in our linked list.
+
 ##More Objects
 
+Now that we understand what happens when we have one pointer, what would happen if we had two?
+
+
+```
+class Node:
+	def __init__(self,data,left=None,right=None):
+		self.data = data
+		self.left = left
+		self.right = right
+	def __str__(self):
+		return repr(self.data)
+
+class Tree:
+	def __init__(self,data=None):
+		self.head = Node(data)
+	def append(self,data):
+		if not self.head:
+			self.head = Node(data)
+		else:
+			cur = self.head
+			while cur.next:
+				cur = cur.next
+			if data <= cur.data:
+				cur.left = Node(data)
+			elif data > cur.next:
+				cur.right = Node(data)
+	def pretty_print(self):
+		cur = self.head
+		self.pprint(self,cur)
+
+	def pprint(self,cur):
+		pprint(cur.left)
+		print cur
+		pprint(cur.right)
+
+
+if __name__ == '__main__':
+	tree = Tree(1)
+	for i in xrange(100000):
+		tree.append(i)
+	tree.pretty_print()	
+```
 
 
 
