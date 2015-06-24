@@ -58,6 +58,12 @@ Or you could implement your own solution!  For that I'd recommend a deep belief 
 
 Now that we can translate pdfs to text files, we are finally in a position to pull information from them.  Remember when we covered file IO?  Well we are going to make use of that here.  
 
+We are going to pull out data from [this report](https://github.com/EricSchles/dany_book/blob/master/basic/trafficking_report.pdf).  The report is from the state department and has a table (on page 45 about trafficking convictions).  Wouldn't it be nice if we had a spreadsheet of that data?  We'll now we can make it ourselves!
+
+So what you'll do is download the pdf and then run the following script:
+
+
+
 
 
 
