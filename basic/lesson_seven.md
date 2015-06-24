@@ -19,11 +19,15 @@ class Node:
 if __name__ == '__main__':
 	head = Node(0)
 	print head
+
+	#list generation
 	cur = head
 	for i in xrange(100):
 		new_node = Node(i)
 		cur.next = new_node
 		cur = cur.next
+	
+	#list observation
 	cur = head
 	while cur:
 		print cur
@@ -32,6 +36,44 @@ if __name__ == '__main__':
 
 This shows us how to create a linked list.  Notice that we have a few things here.  
 
+The way an object's blueprint is created, is with class [Name of class].  To create a new instance of the object we set a variable equal to the name of the class, like we do in the main - `head = Node(0)`.  Such a construction instiates the class, storing any state related data.  The state of an object is defined in the __init__ function, in this case - `data` and `next` are the state variables.  
+
+These two types of variables - `data` and `next` represent to major types of data that can be stored - a classical variable (like the ones we've interacted with thus far) and a new type of variable, called a pointer.  
+
+Pointers are a very interesting topic and making use of them we can do all sorts of things 'in memory'.  A pointer doesn't store data the way a typical variable does.  Instead, it stores meta-data about another variable or object.  Typically this meta-data is the address of the variable.  Why would you want to store such a thing?  Well because then you can create structures for your data 'in-memory'.  
+
+This is powerful because the way in which your data is organized determines how efficiently it can be accessed.  In some cases it can mean the difference between a computation taking miliseconds and days.  
+
+One more thing to note - because python is weakly typed (which means we don't need to specify the type of a variable when we create it) we don't need to do anything special to create a pointer in python.  We simply need to "decide" a variable is a pointer and use it accordingly.  So there is nothing special about next (in this context) and there is nothing special about initializing it to `None`.  `None` is an important keyword - it represents a non-type and means there is no value in the variable.  None is also similar in behavior to False (in python).  In other languages this might be called the null pointer (which is distinct from False) or it might be called nil.  
+Now that we understand the __init__ and the types of data it can hold.  Let's move onto __str__ which is known as the "to string" method - a term popularized by Java.  (Which you should all learn by the way).  The to string method defines what data should be shown when you try to print the instance of the object.  In this case, we should print data.  We have to wrap our data in the repr function to ensure we get the canonical string representation of the object, instead of the object representation.  
+
+Now that we understand our object blueprint, let's see how to use this object in practice.
+
+
+###Understanding the linked list
+```
+if __name__ == '__main__':
+	head = Node(0)
+	print head
+
+	#list generation
+	cur = head
+	for i in xrange(100):
+		new_node = Node(i)
+		cur.next = new_node
+		cur = cur.next
+	
+	#list observation
+	cur = head
+	while cur:
+		print cur
+		cur = cur.next
+
+```
+
+The object - called Node that we created is the main piece of something called a linked list.  The reason the data structure is named as such is because the list is created by linking nodes together, via pointers.  The pointer stores the address to the next object in the series, creating a chain.  
+
+Notice the use of standard conventions here - creating a variable cur (which stands for current) that references the head of the list and is updated throughout the list generation process
 ##More Objects
 
 
