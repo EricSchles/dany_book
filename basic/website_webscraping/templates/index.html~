@@ -1,0 +1,12 @@
+<!docytype HTML>
+<html>
+<head></head>
+<body>
+
+<form method=post>
+<label>Enter your username:</label><input type="text" value="username"></input>
+<label>Enter your password:<input type="password" value="password"></input>
+<input type="submit" value="Submit"></input>
+</form> 
+</body>
+</html>

@@ -1,0 +1,4 @@
+import requests
+
+payload = {"username":"Eric","password":"1234"}
+requests.post("http://localhost:5000",payload=payload)
