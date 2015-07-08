@@ -1,70 +1,100 @@
-#Lesson eight - python as a scripting interface
+#Web Scraping
 
-Now that we know something about how python works and we've seen a little bit of computer science, we are ready for some serious developer tools.  In this lesson we'll learn how to script the command line, creating a powerful interface into the machine.  Later we'll learn how to use make files to get our programs to do even more for us (with extremely efficient parallelization).  
+Web scraping is the ability to take content from the web and store it and manipulate it locally.  There are many reasons someone might scrape the web, but at it's core, web scraping is about taking in unstructured or poorly structured data and structuring it to learn something.  
 
-##Enter subprocess
+Web scraping can be used for a few obvious tasks:
 
-Today we'll start learning how to use python libraries to take advantage of all the hard work of people much smarter than us.  
+* Social Network Analysis
+* Financial/Economic Analysis
+* In conjunction with Natural Language Processing
+ * Sentiment/Psychological Analysis
+ * Political Analysis
+
+##Understanding the web
+
+In order to understand web scraping, we need to understand the web.  This means understanding the various networking layers (in some detail), understanding html (well) and understanding the client/server model (in some detail).  
+
+###The OSI Model (Open Systems Interconnect)
+
+The [OSI model of the internet](link to wikipedia article) (while somewhat dated) shows the granularity of concerns within the internet.  As you can see (if you clicked the link), there are seven layers.  We care about the presentation layer (which is where HTML lives), the HTTP layer, and the TCP/IP layer.  Since we'll talk about HTML indetail we'll avoid it for now.  
+
+###HTTP - Hypertext Transport Protocol
+
+HTTP defines a few methods that are language agonostic and will be used to send information from the server computer to the client computer.  The server computer is where the data is saved (like the html,CSS,javascript,server code, and database of the website).  The way a client computer asks for information from the server is via a request called a `GET` request.  The client can also send data to the server via a `POST` request.  There are a few other request types that can be sent to and from the client and server but these are the ones we primarily care about.  
+
+When scraping the web, we'll be making use of the `GET` request to get information from a specific website (rather than a specific server) but we'll be sending that request to one of a cluster of computers all serving the same content.
+
+First we'll need to install the requests library with the following command:
+
+`sudo pip install requests`
+
+If you are on linux or mac
+
+For windows users, open powershell with admin privileges and type:
+
+`pip install requests`
+
+In python we make a get request as follows:
 
 ```
-from subprocess import call
-from sys import platform
+import requests
 
-if 'win' in platform:
-	call(["dir"])
-if "linux" in platform or "darwin" in platform:
-	call(["ls","-al"])
+req = requests.get("https://www.google.com")
+print req.text
 ```
 
-In the above code, you printed out the current working directory by calling the command line.  Notice that call takes a list of strings.  Each string represents a single word and words are seperated by commas.  Notice this is used for linux systems in the above example.
+Here I've made a get request to google.com and saved the result of the request in an object called req.  After I get the object back I can use one of many methods to interact with the content locally.  If you try running this code, you should see a whole bunch of html fly by your terminal, that's the html information that google.com servers.  The text object stores the html from the given request.  
 
-##PDF to Text
-
-Now that we have a way of accessing the computers resources, let's make use of that to turn pdfs into text files!  For a full explanation of how this works, please go read my friend [Thomas Levine's blog post](https://thomaslevine.com/!/parsing-pdfs/).  In fact, go read everything Tom writes, because he is awesome and knows a TON about computers.  (Way more than I do).
-
-We are now ready for the following small piece of code that will make your life a million times easier:
+Now let's say you wanted to send some data to the server - say login credentials?  To do that you'd need to send a post request
 
 ```
-from subprocess import call
-from sys import argv
+import requests
 
-call(["pdftotext","-layout", argv[1]])
+payload = {"username":"Eric","password":"1234"}
+r = requests.post("http://localhost:5000",data=payload)
+print r.text
 ```
-Okay - so before you can start using this we need to install poppler utils, but don't worry, that's easy:
 
-For linux:
+(We'll be skipping TCP/IP until we do dynamic web scraping in another lecture).
 
-* Simply head to the [poppler site](http://poppler.freedesktop.org/)
-* Save the folder to some place reasonable like `~`.  
-* Extract the contents
-* Open a terminal navigate to the poppler folder (via cd)
-* `./configure`
-* `make`
-* `sudo make install`
+###HTML
 
-After that you are done!
+Now that we understand how to get a bunch of html, let's learn how to structure it.  A very common task is finding all the links on the page.  With python and lxml this is easy, however it's going to require some upfront understanding of how an html document is structured.  
 
-For Windows:
+###Understanding HTML
 
-You simply need to download the [windows binary](http://www.outsch.org/wp-content/uploads/2010/09/poppler-utils.zip)
+HTML is structured as a tree, where the tags inform the hierarchy of the structure.  
 
-For this you'll need to add the folder to your system variables on windows.  
+A typical HTML document will look like this:
 
-To check try typing pdftotext in the command line (you'll need to close all open terminals on windows before you can use pdftotext).  If it prints a whole bunch of options then you've succeeded!  After that, just try running the above script with any pdf.  Note: the pdf will need to be processed with optical character recognition (OCR).  You can use, adobe's OCR solution (most offices have this at the very least) or use [google's tesseract project](https://code.google.com/p/tesseract-ocr/).  
+```
+<html>
+<head></head>
+<body>
+  <p>Hello there</p>
+</body>
+</html> 
+```
 
-Or you could implement your own solution!  For that I'd recommend a deep belief network, neural network, or something hierarchical.  You can see a full list of possible algorithms and implementations at [this kaggle competition](https://www.kaggle.com/c/digit-recognizer).
+Within the html document the `html` tag is the root of the tree.  Since the `html` tag wraps around the `head` tag, it is considered a child of the `head` tag.  Note that the p tag is at the deepest level in the tree because it is encased in other tags but does not enclose any other tags.  
 
-##Parsing PDFs  
+###Traversing HTML
 
-Now that we can translate pdfs to text files, we are finally in a position to pull information from them.  Remember when we covered file IO?  Well we are going to make use of that here.  
+Now that we have a rudimentary understanding of html, we can begin to traverse the html via python and lxml.html
 
-We are going to pull out data from [this report](https://github.com/EricSchles/dany_book/blob/master/basic/trafficking_report.pdf).  The report is from the state department and has a table (on page 45 about trafficking convictions).  Wouldn't it be nice if we had a spreadsheet of that data?  We'll now we can make it ourselves!
+installation:
 
-So what you'll do is download the pdf and then run the following script:
+`sudo pip install lxml.html`
 
+on windows open powershell with admin rights (please make sure you have a c++ compiler installed)
 
+`pip install lxml.html`
 
+```
+import lxml.html
+import requests
 
-
-
-
+r = requests.get("https://www.google.com")
+html = lxml.html.fromstring(r.text)
+print html.xpath("//a/@href")
+```
